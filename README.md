@@ -82,20 +82,19 @@ RoBERTa adalah model pembanding berbasis BERT dengan perbedaan pada pretraining 
   - Batch size: 8  
   - Learning rate: BERT (2e-5), RoBERTa (5e-5)  
   - Weight decay: 0.01  
-- Training menggunakan **WeightedTrainer** agar model belajar adil terhadap semua kelas.  
 
 ---
 
 ## Evaluasi
-- Metrik evaluasi: **Accuracy, F1-Score, Precision, Recall**  
-- Digunakan **Confusion Matrix** untuk memastikan performa di semua kelas.  
-- Bisa menggunakan **Mann-Whitney U Test** untuk melihat perbedaan statistik performa model.  
+- Metrik evaluasi: **Accuracy, F1-Score**
+  - Akurasi mengukur proporsi prediksi yang benar terhadap seluruh data. Metrik ini kurang representatif pada dataset yang tidak seimbang
+  - F1-Score (Weighted) memperhitungkan proporsi setiap kelas. Setiap nilai F1 per kelas diberi bobot sesuai dengan jumlah sampe sehingga hasil evaluasi mencerminkan performa model pada seluruh dataset dan bukan hanya pada kelas mayoritas.
+- Digunakan **Confusion Matrix** untuk memastikan performa di semua kelas.
 
 ---
 
 ## Pengujian
-- Model diuji pada dataset validasi.  
-- `trainer.evaluate()` digunakan untuk menghitung performa model tanpa melatih ulang.  
+- Model diuji pada dataset baru.   
 
 ---
 
